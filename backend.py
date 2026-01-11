@@ -13,7 +13,11 @@ AIRTABLE_TOKEN = os.getenv("AIRTABLE_TOKEN", "")
 AIRTABLE_BASE = "appJ47ZDJ3pJIfYRK"
 AIRTABLE_TABLE = "Annunci"
 
-client = anthropic.Anthropic(api_key=CLAUDE_API_KEY)
+client = anthropic.Anthropic(
+    api_key=CLAUDE_API_KEY,
+    timeout=60.0
+)
+
 
 @app.route('/api/generate-listing', methods=['POST'])
 def generate_listing():
