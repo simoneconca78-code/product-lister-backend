@@ -18,6 +18,17 @@ client = anthropic.Anthropic(
     timeout=60.0
 )
 
+@app.route('/test', methods=['GET'])
+def test():
+    return jsonify({
+        "status": "API is online! ✅",
+        "message": "Product Lister Backend is running",
+        "endpoints": {
+            "generate_listing": "POST /api/generate-listing",
+            "health": "GET /api/health",
+            "test": "GET /test"
+        }
+    }), 200
 
 @app.route('/api/generate-listing', methods=['POST'])
 def generate_listing():
